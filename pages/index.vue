@@ -1,5 +1,5 @@
 <template>
   <div>
-    Bonjour
+    <NowPlaying />
   </div>
 </template>
