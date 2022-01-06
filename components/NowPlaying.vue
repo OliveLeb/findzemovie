@@ -2,7 +2,7 @@
 
   <section>
     <div class="flex justify-between">
-      <h2 class="text-2xl">Now Playing</h2>
+      <h2 class="text-2xl">Now in Theatre</h2>
       <span>see more...</span>
     </div>
 

@@ -1,7 +1,9 @@
 <template>
-  <main>
+  <div>
     <TheHeader />
-    <NuxtPage />
+    <main class="max-w-screen-lg m-auto py-4">
+      <NuxtPage />
+    </main>
     <TheFooter />
-  </main>
+  </div>
 </template>

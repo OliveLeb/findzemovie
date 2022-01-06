@@ -11,7 +11,6 @@ export default defineNuxtPlugin(async nuxtApp => {
 
   const response: any = await $fetch(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=fr&page=1&region=fr`,
-    // `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`,
     {
       method: 'GET',
     }

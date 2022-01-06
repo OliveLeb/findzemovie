@@ -1,28 +1,41 @@
 <template>
   <div>
-    <section>
+    <section class="flex">
       <MovieImage :image="movie.poster_path" />
-      <h2>{{ movie.title }}</h2>
+      <MovieInfo :movie="movie" />
     </section>
-    <Recommendations :movies="firstsRecommendations"/>
+
+    <!-- <Recommendations :movies="recommendations"/> -->
+
+    <!-- <Cast :cast="cast"/> -->
+
   </div>
 </template>
 
 <script setup>
+import MovieInfo from '~~/components/MovieInfo.vue';
+
 const route = useRoute()
-const config = useRuntimeConfig()
-const API_KEY = config.tmdb.TMDB_API_KEY
-// const { data: movie, error } = useAsyncData('current_movie', 
-//   () => $fetch(`https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${API_KEY}&language=fr`)
-// )
-// const { data: recommendations } = useAsyncData('recommendations',
-//   () => $fetch(`https://api.themoviedb.org/3/movie/${route.params.id}/similar?api_key=${API_KEY}&language=fr&page=1`), {
-//     transform: () => {}
+
+const { data: movie } = await useAsyncData('current_movie', 
+  () => imdbFetch(`/movie/${route.params.id}`)
+)
+
+const { data: cast } = await useAsyncData('credits', 
+  () => imdbFetch(`/movie/${route.params.id}/credits`), {
+    // pick: ['cast'],
+    // transform: cast => cast.cast.slice(0,6),
+  }
+)
+
+// const { data: recommendations } = await useAsyncData('recommendations',
+//   () => imdbFetch(`/movie/${route.params.id}/recommendations?language=fr&page=1`), {
+//     transform: movies => movies.results.slice(0,3)
 //   }
 // )
-const movie = await $fetch(`https://api.themoviedb.org/3/movie/${route.params.id}?api_key=${API_KEY}&language=fr`)
-const recommendations = await $fetch(`https://api.themoviedb.org/3/movie/${route.params.id}/similar?api_key=${API_KEY}&language=fr&page=1`)
 
-const firstsRecommendations = computed(() => recommendations.results.slice(0,3))
+// const { data: collection } = await useAsyncData('collection',
+//   () => imdbFetch(`/collection/${movie.value.belongs_to_collection.id}?language=fr`)
+// )
 
 </script>
