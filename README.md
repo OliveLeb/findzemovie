@@ -1,6 +1,7 @@
-# Nuxt 3 Minimal Starter
+# Find Ze Movie
 
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+Personnal Project to search for a movie or a tv show using [Nuxt 3](https://v3.nuxtjs.org/) and [TheMovieDataBase](https://www.themoviedb.org/)  
+Currently in dev
 
 ## Setup
 
@@ -9,6 +10,19 @@ Make sure to install the dependencies
 ```bash
 yarn install
 ```
+
+And copy the .env.example to .env
+
+```bash
+cp .env.example .env
+```
+### The Movie DB
+
+1. Create an account on [TMDB](https://www.themoviedb.org/signup)  
+2. Get an API key 
+3. fill `TMDB_API_KEY` in the .env with it
+
+Check the [TMDB developers docs](https://developers.themoviedb.org/3/getting-started/introduction) to learn more
 
 ## Development
 
