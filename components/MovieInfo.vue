@@ -1,12 +1,20 @@
 <template>
-  <article class="p-2">
-    <h1>{{ movie.title }}</h1>
-      <p>{{ movie.vote_average }}</p>
-      <p>{{ timeToHour }}</p>
-      <p>{{ movie.release_date }}</p>
-
-      <h3>Synopsis</h3>
-      <p>{{ movie.overview }}</p>
+  <article class="p-2 flex flex-col justify-between h-full">
+    <div class="my-3">
+      <ul>
+        <li>{{ timeToHour }}</li>
+        <li>{{ parseDate }}</li>
+      </ul>
+      <div class="text-3xl w-min bg-green-400 rounded-full p-1.5">
+        <span class="rounded-full bg-white">{{ movie.vote_average }}</span>
+      </div>
+    </div>
+    <div>
+        <h2 class="text-2xl uppercase">Synopsis</h2>
+        <p>
+          {{ movie.overview }}
+        </p>
+    </div>
   </article>
 </template>
 
@@ -15,4 +23,5 @@
     movie: Object
   })
   const timeToHour = computed(() => minutesToHours(props.movie.runtime))
+  const parseDate = computed(() => dateToString(props.movie.release_date, 'en'))
 </script>
