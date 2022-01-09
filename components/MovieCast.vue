@@ -3,7 +3,8 @@
   <h2>Starring</h2>
 
   <div class="flex">
-    <div v-for="actor in cast" :key="actor.id">
+    <div v-for="actor in principalCast" :key="actor.id">
+    <NuxtLink to="#"></NuxtLink>
       <ul>
         <li>{{ actor.name }}</li>
         <li>as</li>
@@ -13,12 +14,19 @@
       <MovieImage :image="actor.profile_path"/>
     </div>
   </div>
-
+  <div>
+    <NuxtLink :to="`${cast.id}/cast`" >
+      See more...
+    </NuxtLink>
+  </div>
 </section>
 </template>
 
 <script setup>
   const props = defineProps({
-    cast: Array
+    cast: Object
   })
+
+  const principalCast = computed(() => props.cast.cast.slice(0,6))
+
 </script>

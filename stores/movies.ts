@@ -3,9 +3,10 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 export const useMoviesStore = defineStore('movies', {
 
   state: () => ({
-    currentMovie: {},
     currentlyPlaying: [],
-    recommendations: []
+    movie: {},
+    cast: {},
+    recommendations: [],
   })
 
 })
